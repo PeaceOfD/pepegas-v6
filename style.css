@@ -229,3 +229,7 @@ input:focus{
   border: 1px solid rgba(0,255,204,0.2);
   box-shadow: 0 0 25px rgba(0,255,204,0.1);
 }
+#ping {
+  font-weight: bold;
+  transition: 0.3s;
+}
