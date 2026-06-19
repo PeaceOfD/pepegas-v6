@@ -58,16 +58,14 @@ async function loadServerStatus() {
     statusEl.classList.remove("online", "offline");
 
     if (online) {
-      statusEl.innerText = "🟢 Online";
-      statusEl.classList.add("online");
-
-      pingEl.innerText = `⚡ ${data.ping ?? 0}ms`;
-    } else {
-      statusEl.innerText = "🔴 Offline";
-      statusEl.classList.add("offline");
-
-      pingEl.innerText = "--";
-    }
+  statusEl.innerText = "🟢 Online";
+  playersEl.innerText = `${data.players} / ${data.max}`;
+  pingEl.innerText = `⚡ ${data.ping}ms`;
+} else {
+  statusEl.innerText = "🔴 Offline";
+  playersEl.innerText = "-- / --";
+  pingEl.innerText = "--";
+}
 
     playersEl.innerText = `${data.players ?? 0} / ${data.max ?? 0}`;
 
