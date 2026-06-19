@@ -205,3 +205,10 @@ async function loadServerStatus() {
 loadServerStatus();
 setInterval(loadServerStatus, 8000);
 console.log("STATUS DATA:", data);
+const canvas = document.getElementById("neon");
+
+if (!canvas) {
+  console.error("Canvas not found!");
+} else {
+  const ctx = canvas.getContext("2d");
+}
