@@ -51,8 +51,11 @@ async function loadServerStatus() {
   const playerListEl = document.getElementById("playerList");
 
   try {
-    const res = await fetch("https://mc-status-api.pouyagh2007.workers.dev/");
-    const data = await res.json();
+const res = await fetch(
+  "https://api.mcsrvstat.us/3/pepegas.falix.gg:29317"
+);
+
+const data = await res.json();
 
     const online = data?.online === true;
 
