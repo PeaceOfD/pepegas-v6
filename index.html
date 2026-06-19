@@ -6,20 +6,18 @@
 <title>PEPEGAS</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <section id="landing">
   <div class="hero">
-
-    <!-- فقط لوگو (بدون متن اضافی زیرش) -->
     <img src="pepe.png" class="pepe">
-
     <button id="start">START</button>
-
   </div>
 </section>
 
 <section id="dashboard">
+
   <header>
     <div>PEPEGAS NETWORK</div>
     <button id="loginBtn">LOGIN</button>
@@ -27,10 +25,11 @@
 
   <div class="panel">
     <h2>SERVER STATUS</h2>
-<p>Status: <span id="status" class="status">--</span></p>
-<p>Players: <span id="players" class="players">--</span></p>
+    <p>Status: <span id="status">--</span></p>
+    <p>Players: <span id="players">--</span></p>
     <p>Ping: <span id="ping">--</span></p>
   </div>
+
 </section>
 
 <div id="login">
@@ -41,15 +40,10 @@
   </div>
 </div>
 
+<!-- مهم: اول canvas بعد JS -->
+<canvas id="neon"></canvas>
+
 <script src="app.js"></script>
-<canvas id="neon"></canvas></body>
-</html>
-<body>
-
-  ... همه چیز ...
-
-  <canvas id="neon"></canvas>
-
-  <script src="app.js"></script>
 
 </body>
+</html>
