@@ -171,3 +171,21 @@ function animate() {
 }
 
 animate();
+async function loadServerStatus() {
+  try {
+    const res = await fetch("https://mc-status-api.your-worker.workers.dev");
+    const data = await res.json();
+
+    document.getElementById("status").innerText =
+      data.online ? "🟢 Online" : "🔴 Offline";
+
+    document.getElementById("players").innerText =
+      `${data.players} / ${data.max}`;
+  } catch (e) {
+    document.getElementById("status").innerText = "🔴 Error";
+    document.getElementById("players").innerText = "--";
+  }
+}
+
+loadServerStatus();
+setInterval(loadServerStatus, 10000);
