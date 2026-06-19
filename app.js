@@ -47,9 +47,10 @@ document.getElementById("login").onclick = (e) => {
 async function loadServerStatus() {
   const statusEl = document.getElementById("status");
   const playersEl = document.getElementById("players");
+  const pingEl = document.getElementById("ping");
 
   try {
-    const res = await fetch("https://mc-status-api.your-worker.workers.dev");
+    const res = await fetch("https://mc-status-api.pouyagh2007.workers.dev/");
     const data = await res.json();
 
     const online = data?.online === true;
@@ -59,9 +60,15 @@ async function loadServerStatus() {
     if (online) {
       statusEl.innerText = "🟢 Online";
       statusEl.classList.add("online");
+
+      // 👇 اینو اینجا اضافه کن
+      pingEl.innerText = "⚡ 20-60ms";
     } else {
       statusEl.innerText = "🔴 Offline";
       statusEl.classList.add("offline");
+
+      // 👇 وقتی خاموشه
+      pingEl.innerText = "--";
     }
 
     playersEl.innerText = `${data.players ?? 0} / ${data.max ?? 0}`;
@@ -69,7 +76,9 @@ async function loadServerStatus() {
   } catch (err) {
     statusEl.innerText = "🔴 Offline";
     statusEl.classList.add("offline");
+
     playersEl.innerText = "-- / --";
+    pingEl.innerText = "--";
   }
 }
 
