@@ -6,29 +6,22 @@ body{
   overflow:hidden;
 }
 
-/* HERO CENTER کامل */
+/* HERO */
 .hero{
   height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
+  animation: heroIn 1s ease;
 }
 
-/* LOGO بزرگ و خفن */
 .pepe{
-  width:340px;   /* 👈 اینو بزرگ کردم */
-  height:auto;
+  width:340px;
   margin-bottom:30px;
   filter:drop-shadow(0 0 45px #00ffcc);
-  transition:0.3s;
 }
 
-.pepe:hover{
-  transform:scale(1.05);
-}
-
-/* START BUTTON */
 #start{
   padding:14px 60px;
   border:none;
@@ -38,7 +31,6 @@ body{
   box-shadow:0 0 30px #00ffcc;
   cursor:pointer;
   border-radius:10px;
-  letter-spacing:2px;
 }
 
 /* DASHBOARD */
@@ -60,6 +52,7 @@ header{
   border:1px solid #00ffcc;
   box-shadow:0 0 50px #00ffcc;
   backdrop-filter:blur(15px);
+  border-radius:16px;
 }
 
 /* LOGIN */
@@ -78,6 +71,8 @@ header{
   background:black;
   border:1px solid #00ffcc;
 }
+
+/* CANVAS */
 #neon{
   position:fixed;
   top:0;
@@ -85,151 +80,21 @@ header{
   width:100%;
   height:100%;
   z-index:-1;
-  background:black;
-}
-*{
-  transition: all 0.3s ease;
 }
 
-/* 🌌 HERO DEPTH */
-.hero{
-  animation: heroIn 1.2s ease forwards;
-  transform: scale(1.05);
-  opacity: 0;
+/* STATUS */
+.online{
+  color:#00ffcc;
+  text-shadow:0 0 20px #00ffcc;
 }
 
-@keyframes heroIn{
-  0%{
-    transform: scale(1.2);
-    opacity: 0;
-    filter: blur(10px);
-  }
-  100%{
-    transform: scale(1);
-    opacity: 1;
-    filter: blur(0);
-  }
-}
-
-/* 🎮 BUTTON POLISH */
-#start{
-  position: relative;
-  overflow: hidden;
-}
-
-#start::before{
-  content: "";
-  position: absolute;
-  top:0;
-  left:-100%;
-  width:100%;
-  height:100%;
-  background: linear-gradient(90deg,transparent,rgba(255,255,255,0.2),transparent);
-  transition: 0.5s;
-}
-
-#start:hover::before{
-  left:100%;
-}
-
-/* 📦 PANEL POLISH */
-.panel{
-  border-radius: 16px;
-  transform: translateY(10px);
-  animation: panelIn 1s ease forwards;
-}
-
-@keyframes panelIn{
-  from{
-    opacity:0;
-    transform: translateY(30px);
-  }
-  to{
-    opacity:1;
-    transform: translateY(0);
-  }
-}
-
-/* 🔐 LOGIN POLISH */
-#login{
-  backdrop-filter: blur(15px);
-}
-
-.box{
-  border-radius: 14px;
-  box-shadow: 0 0 60px rgba(0,255,204,0.2);
-  transform: scale(0.9);
-  animation: loginPop 0.4s ease forwards;
-}
-
-@keyframes loginPop{
-  from{
-    transform: scale(0.7);
-    opacity:0;
-  }
-  to{
-    transform: scale(1);
-    opacity:1;
-  }
-}
-
-/* 🧊 INPUTS */
-input{
-  width:100%;
-  padding:10px;
-  margin:8px 0;
-  background:black;
-  border:1px solid #00ffcc;
-  color:white;
-  outline:none;
-}
-
-input:focus{
-  box-shadow: 0 0 15px #00ffcc;
-}
-.status {
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-/* 🟢 ONLINE */
-.online {
-  color: #00ffcc;
-  text-shadow: 0 0 20px #00ffcc;
-}
-
-.offline {
-  color: #ff004c;
+.offline{
+  color:#ff004c;
   animation: blink 0.8s infinite;
 }
 
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.2; }
-  100% { opacity: 1; }
-}
-.panel p {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-}
-
-#status, #players {
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-/* کارت وضعیت */
-.status-card {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 12px;
-  background: rgba(0,0,0,0.4);
-  border: 1px solid rgba(0,255,204,0.2);
-  box-shadow: 0 0 25px rgba(0,255,204,0.1);
-}
-#ping {
-  font-weight: bold;
-  transition: 0.3s;
+@keyframes blink{
+  0%{opacity:1;}
+  50%{opacity:0.2;}
+  100%{opacity:1;}
 }
