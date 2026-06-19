@@ -13,7 +13,6 @@ body{
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  animation: heroIn 1s ease;
 }
 
 .pepe{
@@ -98,6 +97,8 @@ header{
   50%{opacity:0.2;}
   100%{opacity:1;}
 }
+
+/* PLAYERS */
 .players-box {
   margin-top: 20px;
   padding: 10px;
@@ -118,4 +119,9 @@ header{
   border-radius: 6px;
   font-size: 12px;
   text-shadow: 0 0 10px #00ffcc;
+}
+
+#ping {
+  font-weight: bold;
+  transition: 0.3s;
 }
