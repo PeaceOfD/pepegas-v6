@@ -195,14 +195,12 @@ input:focus{
 /* 🟢 ONLINE */
 .online {
   color: #00ffcc;
-  text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  text-shadow: 0 0 20px #00ffcc;
 }
 
-/* 🔴 OFFLINE (چشمک زن واقعی) */
 .offline {
   color: #ff004c;
   animation: blink 0.8s infinite;
-  text-shadow: none;
 }
 
 @keyframes blink {
