@@ -179,32 +179,26 @@ async function loadServerStatus() {
     const statusEl = document.getElementById("status");
     const playersEl = document.getElementById("players");
 
-    // STATUS
+    // پاک کردن کلاس‌های قبلی
+    statusEl.classList.remove("online", "offline");
+
     if (data.online) {
       statusEl.innerText = "🟢 Online";
-      statusEl.classList.add("online", "pulse");
-      statusEl.classList.remove("offline");
+      statusEl.classList.add("online");
     } else {
       statusEl.innerText = "🔴 Offline";
       statusEl.classList.add("offline");
-      statusEl.classList.remove("online", "pulse");
     }
 
-    // PLAYERS
     playersEl.innerText = `${data.players} / ${data.max}`;
 
-    // glow based on activity
-    if (data.players > 0) {
-      playersEl.style.color = "#00ffcc";
-      playersEl.style.textShadow = "0 0 20px #00ffcc";
-    } else {
-      playersEl.style.color = "#666";
-      playersEl.style.textShadow = "none";
-    }
-
   } catch (e) {
-    document.getElementById("status").innerText = "🔴 Error";
-    document.getElementById("players").innerText = "--";
+    const statusEl = document.getElementById("status");
+    const playersEl = document.getElementById("players");
+
+    statusEl.innerText = "🔴 Error";
+    statusEl.classList.add("offline");
+    playersEl.innerText = "--";
   }
 }
 
