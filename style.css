@@ -98,3 +98,24 @@ header{
   50%{opacity:0.2;}
   100%{opacity:1;}
 }
+.players-box {
+  margin-top: 20px;
+  padding: 10px;
+  border-top: 1px solid rgba(0,255,204,0.3);
+}
+
+#playerList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.player {
+  padding: 5px 10px;
+  background: rgba(0,255,204,0.1);
+  border: 1px solid rgba(0,255,204,0.3);
+  border-radius: 6px;
+  font-size: 12px;
+  text-shadow: 0 0 10px #00ffcc;
+}
