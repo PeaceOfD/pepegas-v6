@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PEPEGAS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="landing">
+  <div class="hero">
+
+    <!-- فقط لوگو (بدون متن اضافی زیرش) -->
+    <img src="pepe.png" class="pepe">
+
+    <button id="start">START</button>
+
+  </div>
+</section>
+
+<section id="dashboard">
+  <header>
+    <div>PEPEGAS NETWORK</div>
+    <button id="loginBtn">LOGIN</button>
+  </header>
+
+  <div class="panel">
+    <h2>SERVER STATUS</h2>
+    <p>Status: <span id="status">--</span></p>
+    <p>Players: <span id="players">--</span></p>
+    <p>Ping: <span id="ping">--</span></p>
+  </div>
+</section>
+
+<div id="login">
+  <div class="box">
+    <input placeholder="username">
+    <input type="password" placeholder="password">
+    <button>LOGIN</button>
+  </div>
+</div>
+
+<script src="app.js"></script>
+<canvas id="neon"></canvas></body>
+</html>
