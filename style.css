@@ -189,35 +189,24 @@ input:focus{
 }
 .status {
   font-weight: bold;
-  text-shadow: 0 0 10px #00ffcc;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
-.players {
-  font-weight: bold;
-  text-shadow: 0 0 10px #0066ff;
-  transition: 0.4s;
-}
-
-/* 🟢 ONLINE STATE */
+/* 🟢 ONLINE */
 .online {
   color: #00ffcc;
   text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
 }
 
-/* 🔴 OFFLINE STATE */
+/* 🔴 OFFLINE (چشمک زن واقعی) */
 .offline {
   color: #ff004c;
-  text-shadow: 0 0 20px #ff004c, 0 0 40px #ff004c;
+  animation: blink 0.8s infinite;
+  text-shadow: none;
 }
 
-/* 💫 pulse animation */
-.pulse {
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
 }
