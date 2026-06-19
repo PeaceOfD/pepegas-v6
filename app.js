@@ -204,3 +204,4 @@ async function loadServerStatus() {
 
 loadServerStatus();
 setInterval(loadServerStatus, 8000);
+console.log("STATUS DATA:", data);
