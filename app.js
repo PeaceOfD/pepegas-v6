@@ -62,7 +62,9 @@ async function loadServerStatus() {
       statusEl.classList.add("online");
 
       // 👇 اینو اینجا اضافه کن
-      pingEl.innerText = "⚡ 20-60ms";
+      pingEl.innerText = data.online
+  ? `⚡ ${data.ping}ms`
+  : "--";
     } else {
       statusEl.innerText = "🔴 Offline";
       statusEl.classList.add("offline");
