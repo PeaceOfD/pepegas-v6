@@ -1,5 +1,5 @@
 // ==========================
-// UI CONTROLS
+// UI CONTROL
 // ==========================
 
 document.getElementById("start").onclick = () => {
@@ -56,31 +56,54 @@ async function loadServerStatus() {
 
     const online = data?.online === true;
 
+    // reset classes
     statusEl.classList.remove("online", "offline");
 
-   if (online) {
-  statusEl.innerText = "🟢 Online";
-  statusEl.classList.add("online");
+    if (online) {
+      statusEl.innerText = "🟢 Online";
+      statusEl.classList.add("online");
 
-  pingEl.innerText = `⚡ ${data.ping ?? 0}ms`;
+      playersEl.innerText = `${data.players ?? 0} / ${data.max ?? 0}`;
 
-  // 👇 PLAYER LIST
-  if (data.list && data.list.length > 0) {
-    playerListEl.innerHTML = data.list
-      .map(p => `<div class="player">${p}</div>`)
-      .join("");
-  } else {
-    playerListEl.innerHTML = "<div class='player'>No players</div>";
+      pingEl.innerText = `⚡ ${data.ping ?? 0}ms`;
+
+      // ping color system
+      if (data.ping < 80) {
+        pingEl.style.color = "#00ffcc";
+      } else if (data.ping < 150) {
+        pingEl.style.color = "orange";
+      } else {
+        pingEl.style.color = "red";
+      }
+
+      // PLAYER LIST
+      if (data.list && data.list.length > 0) {
+        playerListEl.innerHTML = data.list
+          .map(p => `<div class="player">${p}</div>`)
+          .join("");
+      } else {
+        playerListEl.innerHTML = "<div class='player'>No players</div>";
+      }
+
+    } else {
+      statusEl.innerText = "🔴 Offline";
+      statusEl.classList.add("offline");
+
+      playersEl.innerText = "-- / --";
+      pingEl.innerText = "--";
+      pingEl.style.color = "#fff";
+
+      playerListEl.innerHTML = "--";
+    }
+
+  } catch (err) {
+    statusEl.innerText = "🔴 Offline";
+    statusEl.classList.add("offline");
+
+    playersEl.innerText = "-- / --";
+    pingEl.innerText = "--";
+    playerListEl.innerHTML = "--";
   }
-
-} else {
-  statusEl.innerText = "🔴 Offline";
-  statusEl.classList.add("offline");
-
-  playersEl.innerText = "-- / --";
-  pingEl.innerText = "--";
-
-  playerListEl.innerHTML = "--";
 }
 
 loadServerStatus();
