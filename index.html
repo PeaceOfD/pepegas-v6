@@ -26,21 +26,16 @@
   <div class="panel status-card">
     <h2>SERVER STATUS</h2>
 
-    <p>
-      Status: <span id="status">--</span>
-    </p>
+    <p>Status: <span id="status">--</span></p>
+    <p>Players: <span id="players">--</span></p>
+    <p>Ping: <span id="ping">--</span></p>
 
-    <p>
-      Players: <span id="players">--</span>
-    </p>
+    <!-- 👇 Player List -->
+    <div class="players-box">
+      <h3>ONLINE PLAYERS</h3>
+      <div id="playerList">--</div>
+    </div>
 
-    <p>
-      Ping: <span id="ping">--</span>
-    </p>
-    <!-- 👇 اینو اینجا اضافه کن -->
-<div class="players-box">
-  <h3>ONLINE PLAYERS</h3>
-  <div id="playerList">--</div>
   </div>
 
 </section>
@@ -53,7 +48,6 @@
   </div>
 </div>
 
-<!-- Canvas background -->
 <canvas id="neon"></canvas>
 
 <script src="app.js"></script>
