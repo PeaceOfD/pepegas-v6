@@ -208,3 +208,24 @@ input:focus{
   50% { opacity: 0.2; }
   100% { opacity: 1; }
 }
+.panel p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+#status, #players {
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* کارت وضعیت */
+.status-card {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(0,255,204,0.2);
+  box-shadow: 0 0 25px rgba(0,255,204,0.1);
+}
