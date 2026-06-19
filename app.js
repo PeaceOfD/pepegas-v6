@@ -50,7 +50,7 @@ async function loadServerStatus() {
   const pingEl = document.getElementById("ping");
 
   try {
-    const res = await fetch("https://mc-status-api.your-worker.workers.dev");
+    const res = await fetch("https://mc-status-api.pouyagh2007.workers.dev/");
     const data = await res.json();
 
     const online = data?.online === true;
