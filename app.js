@@ -48,6 +48,7 @@ async function loadServerStatus() {
   const statusEl = document.getElementById("status");
   const playersEl = document.getElementById("players");
   const pingEl = document.getElementById("ping");
+  const playerListEl = document.getElementById("playerList");
 
   try {
     const res = await fetch("https://mc-status-api.pouyagh2007.workers.dev/");
@@ -57,34 +58,29 @@ async function loadServerStatus() {
 
     statusEl.classList.remove("online", "offline");
 
-    if (online) {
+   if (online) {
   statusEl.innerText = "🟢 Online";
-  playersEl.innerText = `${data.players} / ${data.max}`;
-  pingEl.innerText = `⚡ ${data.ping}ms`;
+  statusEl.classList.add("online");
+
+  pingEl.innerText = `⚡ ${data.ping ?? 0}ms`;
+
+  // 👇 PLAYER LIST
+  if (data.list && data.list.length > 0) {
+    playerListEl.innerHTML = data.list
+      .map(p => `<div class="player">${p}</div>`)
+      .join("");
+  } else {
+    playerListEl.innerHTML = "<div class='player'>No players</div>";
+  }
+
 } else {
   statusEl.innerText = "🔴 Offline";
+  statusEl.classList.add("offline");
+
   playersEl.innerText = "-- / --";
   pingEl.innerText = "--";
-}
 
-    playersEl.innerText = `${data.players ?? 0} / ${data.max ?? 0}`;
-
-    // ping color system
-    if (data.ping < 80) {
-      pingEl.style.color = "#00ffcc";
-    } else if (data.ping < 150) {
-      pingEl.style.color = "orange";
-    } else {
-      pingEl.style.color = "red";
-    }
-
-  } catch (err) {
-    statusEl.innerText = "🔴 Offline";
-    statusEl.classList.add("offline");
-
-    playersEl.innerText = "-- / --";
-    pingEl.innerText = "--";
-  }
+  playerListEl.innerHTML = "--";
 }
 
 loadServerStatus();
