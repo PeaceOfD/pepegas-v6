@@ -1,5 +1,5 @@
 // ==========================
-// UI CONTROL
+// UI CONTROLS
 // ==========================
 
 document.getElementById("start").onclick = () => {
@@ -41,7 +41,7 @@ document.getElementById("login").onclick = (e) => {
 };
 
 // ==========================
-// SERVER STATUS (FIXED)
+// SERVER STATUS
 // ==========================
 
 async function loadServerStatus() {
@@ -50,7 +50,7 @@ async function loadServerStatus() {
   const pingEl = document.getElementById("ping");
 
   try {
-    const res = await fetch("https://mc-status-api.pouyagh2007.workers.dev/");
+    const res = await fetch("https://mc-status-api.your-worker.workers.dev");
     const data = await res.json();
 
     const online = data?.online === true;
@@ -61,25 +61,24 @@ async function loadServerStatus() {
       statusEl.innerText = "🟢 Online";
       statusEl.classList.add("online");
 
-      // 👇 اینو اینجا اضافه کن
-      pingEl.innerText = data.online
-  ? `⚡ ${data.ping}ms`
-  : "--";
-  if (data.ping < 80) {
-  pingEl.style.color = "#00ffcc";
-} else if (data.ping < 150) {
-  pingEl.style.color = "orange";
-} else {
-  pingEl.style.color = "red";
-  } else {
+      pingEl.innerText = `⚡ ${data.ping ?? 0}ms`;
+    } else {
       statusEl.innerText = "🔴 Offline";
       statusEl.classList.add("offline");
 
-      // 👇 وقتی خاموشه
       pingEl.innerText = "--";
     }
 
     playersEl.innerText = `${data.players ?? 0} / ${data.max ?? 0}`;
+
+    // ping color system
+    if (data.ping < 80) {
+      pingEl.style.color = "#00ffcc";
+    } else if (data.ping < 150) {
+      pingEl.style.color = "orange";
+    } else {
+      pingEl.style.color = "red";
+    }
 
   } catch (err) {
     statusEl.innerText = "🔴 Offline";
@@ -94,7 +93,7 @@ loadServerStatus();
 setInterval(loadServerStatus, 8000);
 
 // ==========================
-// NEON CANVAS (FIXED NULL BUG)
+// NEON CANVAS BACKGROUND
 // ==========================
 
 const canvas = document.getElementById("neon");
@@ -107,7 +106,6 @@ if (canvas) {
 
   let cracks = [];
   let fog = [];
-  let scanOffset = 0;
 
   for (let i = 0; i < 40; i++) {
     cracks.push({
