@@ -65,7 +65,13 @@ async function loadServerStatus() {
       pingEl.innerText = data.online
   ? `⚡ ${data.ping}ms`
   : "--";
-    } else {
+  if (data.ping < 80) {
+  pingEl.style.color = "#00ffcc";
+} else if (data.ping < 150) {
+  pingEl.style.color = "orange";
+} else {
+  pingEl.style.color = "red";
+  } else {
       statusEl.innerText = "🔴 Offline";
       statusEl.classList.add("offline");
 
