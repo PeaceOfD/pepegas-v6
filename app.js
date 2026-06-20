@@ -51,11 +51,15 @@ async function loadServerStatus() {
   const playerListEl = document.getElementById("playerList");
 
   try {
-const res = await fetch(
-  "https://api.mcsrvstat.us/3/pepegas.falix.gg:29317?refresh=true"
-);
+    const startTime = performance.now();
 
-const data = await res.json();
+    const res = await fetch(
+      "https://api.mcsrvstat.us/3/pepegas.falix.gg:29317?refresh=true"
+    );
+
+    const data = await res.json();
+
+    const endTime = performance.now();
 
     const online = data?.online === true;
 
@@ -66,37 +70,44 @@ const data = await res.json();
       statusEl.innerText = "🟢 Online";
       statusEl.classList.add("online");
 
-playersEl.innerText =
-`${data.players?.online ?? 0} / ${data.players?.max ?? 0}`;
+      playersEl.innerText =
+        `${data.players?.online ?? 0} / ${data.players?.max ?? 0}`;
 
-pingEl.innerText = "--";
-pingEl.style.color = "#00ffcc";
+      // ==========================
+      // 🔥 FIXED PING SYSTEM
+      // ==========================
 
-      // ping color system
-      if (data.ping < 80) {
+      const apiPing = endTime - startTime;
+      const mcPing = data?.ping || 0;
+
+      const finalPing = Math.round((apiPing * 0.7) + (mcPing * 0.3));
+
+      pingEl.innerText = finalPing + " ms";
+
+      if (finalPing < 60) {
         pingEl.style.color = "#00ffcc";
-      } else if (data.ping < 150) {
+      } else if (finalPing < 120) {
         pingEl.style.color = "orange";
       } else {
         pingEl.style.color = "red";
       }
 
       // PLAYER LIST
-if (
-  data.players &&
-  data.players.list &&
-  data.players.list.length > 0
-) {
-playerListEl.innerHTML = data.players.list
-  .map(player => `
-    <div class="player">
-      ${player.name}
-    </div>
-  `)
-  .join("");
-} else {
-  playerListEl.innerHTML = "<div class='player'>No players</div>";
-}
+      if (
+        data.players &&
+        data.players.list &&
+        data.players.list.length > 0
+      ) {
+        playerListEl.innerHTML = data.players.list
+          .map(player => `
+            <div class="player">
+              ${player.name}
+            </div>
+          `)
+          .join("");
+      } else {
+        playerListEl.innerHTML = "<div class='player'>No players</div>";
+      }
 
     } else {
       statusEl.innerText = "🔴 Offline";
