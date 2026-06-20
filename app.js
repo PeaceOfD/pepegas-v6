@@ -66,9 +66,11 @@ const data = await res.json();
       statusEl.innerText = "🟢 Online";
       statusEl.classList.add("online");
 
-      playersEl.innerText = `${data.players ?? 0} / ${data.max ?? 0}`;
+playersEl.innerText =
+`${data.players?.online ?? 0} / ${data.players?.max ?? 0}`;
 
-      pingEl.innerText = `⚡ ${data.ping ?? 0}ms`;
+pingEl.innerText = "--";
+pingEl.style.color = "#00ffcc";
 
       // ping color system
       if (data.ping < 80) {
@@ -80,13 +82,17 @@ const data = await res.json();
       }
 
       // PLAYER LIST
-      if (data.list && data.list.length > 0) {
-        playerListEl.innerHTML = data.list
-          .map(p => `<div class="player">${p}</div>`)
-          .join("");
-      } else {
-        playerListEl.innerHTML = "<div class='player'>No players</div>";
-      }
+if (
+  data.players &&
+  data.players.list &&
+  data.players.list.length > 0
+) {
+  playerListEl.innerHTML = data.players.list
+    .map(p => `<div class="player">${p}</div>`)
+    .join("");
+} else {
+  playerListEl.innerHTML = "<div class='player'>No players</div>";
+}
 
     } else {
       statusEl.innerText = "🔴 Offline";
