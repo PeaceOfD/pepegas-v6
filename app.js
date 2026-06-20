@@ -43,10 +43,6 @@ document.getElementById("login").onclick = (e) => {
 // ==========================
 // SERVER STATUS
 // ==========================
-const URLS = [
-  "https://api.mcsrvstat.us/3/157.90.205.61:29317",
-  "https://api.mcsrvstat.us/2/157.90.205.61:29317"
-];
 
 async function loadServerStatus() {
   const statusEl = document.getElementById("status");
@@ -57,11 +53,11 @@ async function loadServerStatus() {
   try {
     const startTime = performance.now();
 
-const data = await fetchServer();
+const res = await fetch(
+  "https://api.mcsrvstat.us/3/157.90.205.61:29317"
+);
 
-if (!data) {
-  throw new Error("API unavailable");
-}
+const data = await res.json();
     const endTime = performance.now();
 
     const online = data?.online === true;
