@@ -87,9 +87,13 @@ if (
   data.players.list &&
   data.players.list.length > 0
 ) {
-  playerListEl.innerHTML = data.players.list
-    .map(p => `<div class="player">${p}</div>`)
-    .join("");
+playerListEl.innerHTML = data.players.list
+  .map(player => `
+    <div class="player">
+      ${player.name}
+    </div>
+  `)
+  .join("");
 } else {
   playerListEl.innerHTML = "<div class='player'>No players</div>";
 }
