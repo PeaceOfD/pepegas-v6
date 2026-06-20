@@ -52,7 +52,7 @@ async function loadServerStatus() {
 
   try {
 const res = await fetch(
-  "https://api.mcsrvstat.us/2/pepegas.falix.gg:29317"
+  "https://api.mcsrvstat.us/3/pepegas.falix.gg:29317?refresh=true"
 );
 
 const data = await res.json();
